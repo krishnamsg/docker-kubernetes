@@ -1,10 +1,13 @@
-#tomca.yaml
-
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tomcat-shop
 # tomcat-pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: tomcat-pod
+  name: tomcat-boxer-pod1
 spec:
   containers:
   - name: tomcat-container
@@ -16,7 +19,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-deployment
+  name: tomcat-deployment-boxer1
 spec:
   replicas: 3
   selector:
@@ -29,7 +32,7 @@ spec:
     spec:
       containers:
       - name: tomcat-container
-        image: krishnamsg/tomcat-boxer:latest
+        image: krishnamsg/complete-prodcution-e2e-pipeline:1.0.0-24
         ports:
         - containerPort: 8080
 
@@ -37,7 +40,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tomcat-service
+  name: tomcat-boxer1
 spec:
   selector:
     app: tomcat
@@ -46,4 +49,3 @@ spec:
       port: 80
       targetPort: 8080
   type: NodePort
-
