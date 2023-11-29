@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: tomcat-shop
+  name: argocd
 # tomcat-pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: tomcat-boxer-pod1
+  name: tomcat-boxer-argocd
 spec:
   containers:
   - name: tomcat-container
@@ -19,7 +19,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-deployment-boxer1
+  name: tomcat-deployment-argocd
 spec:
   replicas: 3
   selector:
@@ -40,7 +40,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tomcat-boxer1
+  name: tomcat-argocd
 spec:
   selector:
     app: tomcat
